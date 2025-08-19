@@ -1,0 +1,14 @@
+{
+  "name": "vite-plugin-simple-manifest",
+  "type": "module",
+  "version": "1.0.3",
+  "description": "A simple Vite plugin to generate a (flat) manifest.json with JS/CSS entries",
+  "main": "index.js",
+  "keywords": ["vite", "plugin", "manifest", "cache-busting"],
+  "author": "Sebastian Thulin",
+  "license": "MIT",
+  "peerDependencies": {
+    "vite": ">=5 <=7"
+  },
+  "types": "index.d.ts"
+}

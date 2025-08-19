@@ -1,0 +1,15 @@
+{
+  "name": "vite-config-factory",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A simple Vite plugin for common vite config across multiple projects.",
+  "main": "index.js",
+  "keywords": ["vite", "plugin", "config", "factory"],
+  "author": "Sebastian Thulin",
+  "license": "MIT",
+  "peerDependencies": {
+    "vite": "^7.1.2",
+    "vite-plugin-simple-manifest": "^1.0.3"
+  },
+  "types": "index.d.ts"
+}
