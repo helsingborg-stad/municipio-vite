@@ -1,10 +1,9 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
-import simpleManifest from 'vite-plugin-simple-manifest'
+import { manifestPlugin } from 'vite-plugin-simple-manifest'
 
 export function createViteConfig(entries, options = {}) {
   const { outDir = 'dist', manifestFile = 'manifest.json' } = options
-  const { manifestPlugin } = simpleManifest
 
   return defineConfig(({ mode }) => {
     const isProduction = mode === 'production'

@@ -1,7 +1,7 @@
 {
   "name": "vite-config-factory",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple Vite plugin for common vite config across multiple projects.",
   "main": "index.js",
   "keywords": ["vite", "plugin", "config", "factory"],
