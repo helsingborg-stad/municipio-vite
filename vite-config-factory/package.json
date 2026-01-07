@@ -11,5 +11,8 @@
     "vite": "^7.1.2",
     "vite-plugin-simple-manifest": "^1.0.3"
   },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.2"
+  },
   "types": "index.d.ts"
 }

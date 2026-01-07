@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import { manifestPlugin } from 'vite-plugin-simple-manifest'
+import react from '@vitejs/plugin-react'
 
 export function createViteConfig(entries, options = {}) {
   const { outDir = 'dist', manifestFile = 'manifest.json' } = options
@@ -59,7 +60,7 @@ export function createViteConfig(entries, options = {}) {
           '~': resolve(process.cwd(), 'node_modules')
         }
       },
-      plugins: [manifestPlugin(manifestFile)]
+      plugins: [manifestPlugin(manifestFile), react()]
     }
   })
 }
