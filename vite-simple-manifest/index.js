@@ -7,12 +7,18 @@ export function manifestPlugin(outputFile = 'manifest.json') {
         if (chunk.type === 'asset' && fileName.endsWith('.css')) {
           let baseName = fileName.replace('.css', '')
           if (baseName.includes('.')) baseName = baseName.replace(/\.[a-zA-Z0-9_-]+$/, '')
-          manifest[baseName + '.css'] = fileName
-        } else if (chunk.type === 'chunk' && fileName.endsWith('.js')) {
+          if (baseName.startsWith('css/')) {
+            manifest[baseName + '.css'] = fileName
+          } else {
+            this.warn(`Skipping CSS entry that does not start with "css/": ${chunk.fileName}`)
+          }
+        } else if (chunk.type === 'chunk' && fileName.endsWith('.js') && chunk.facadeModuleId && !/\.(css|scss|sass)$/.test(chunk.facadeModuleId)) {
           let baseName = fileName.replace('.js', '')
           if (baseName.includes('.')) baseName = baseName.replace(/\.[a-zA-Z0-9_-]+$/, '')
           const entryKey = baseName + '.js'
-          if (entryKey.startsWith('js/')) manifest[entryKey] = fileName
+          if (entryKey.startsWith('js/')) { manifest[entryKey] = fileName } else {
+            this.warn(`Skipping JS entry that does not start with "js/": ${chunk.fileName}`)
+          }
         }
       }
       this.emitFile({
