@@ -1,7 +1,14 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import { manifestPlugin } from 'vite-plugin-simple-manifest'
-import react from '@vitejs/plugin-react'
+
+let { default: jsxPlugin } = await (async () => {
+  try {
+    return await import('@vitejs/plugin-react')
+  } catch {
+    console.log("info - missing @vitejs/plugin-react dependency, skipping react plugin")
+  }
+})() ?? {}
 
 export function createViteConfig(entries, options = {}) {
   const { outDir = 'dist', manifestFile = 'manifest.json' } = options
@@ -60,7 +67,7 @@ export function createViteConfig(entries, options = {}) {
           '~': resolve(process.cwd(), 'node_modules')
         }
       },
-      plugins: [manifestPlugin(manifestFile), react()]
+      plugins: [manifestPlugin(manifestFile), jsxPlugin?.()].filter(x => x)
     }
   })
 }
